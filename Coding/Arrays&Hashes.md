@@ -10,6 +10,7 @@ The goal of this document is to look at common live coding questions to try and 
 Leet code link --> https://leetcode.com/problems/contains-duplicate/
 
 ```c#
+    public bool ContainsDuplicate(int[] nums) 
     {
         if (nums == null || nums.Length == 0)
             return false;

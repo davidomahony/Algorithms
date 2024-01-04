@@ -17,19 +17,21 @@ Leet code link --> https://leetcode.com/problems/contains-duplicate/
         HashSet<int> set = new HashSet<int>();
         foreach (var itm in nums)
         {
-            if (set.Contains(itm)) return true;
-            else set.Add(itm);
+            if (set.Contains(itm)) 
+                return true;
+            else 
+                set.Add(itm);
         }
 
         return false;
     }
 ```
 
-This is a pretty basic problem with the aim of getting used to iterating through an array and solving the problem with various data structures. In this case a hash set is ideal, with a hash set you can not have keys with the same value. Due to how a hash set operates.
+This is a pretty basic problem with the aim of getting used to iterating through an array and solving the problem with various data structures. In this case a hash set is ideal, with a hash set you can not have keys with the same value.
 
-#### Points to note about hashsets and dictionaries
+#### Points to note about hashsets
+When a new item is added to a hashset a hash is generated using a has function. This then decides what bucket to place the new object in. If the hash function is bad and every object ends up in the same bucket this can result in a time complexity of O(n).
 
-##### Operations
+*If the hash code of two objects are equal this does not prove these objects are identical. This is true only if the hashcode and the equals functions confirms equality, then can we assume both objects are identical.*
 
-##### Questions
 

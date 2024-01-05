@@ -51,4 +51,73 @@ Another relatively basic problem better to ask more junior developers as its sho
 https://leetcode.com/problems/valid-anagram
 
 
+```c#
+    public bool IsAnagram(string s, string t) 
+    {
+        if (s.Length != t.Length)
+            return false;
+
+        var freq = new Dictionary<char, int>();
+        foreach (var c in s)
+        {
+            if (freq.TryGetValue(c, out int res))
+                freq[c] = res + 1;
+            else 
+                freq.Add(c, 1);
+        }
+
+        foreach (var c in t)
+        {
+            if (freq.TryGetValue(c, out int res))
+                freq[c] = res - 1;
+            else 
+                return false;
+        }
+
+        return freq.All(itm => itm.Value == 0);
+    }
+```
+
+Once again we make use of a Dictionary to keep count of how often each character occurs. First we go through the first string populating our frequency dictionary. Second we iterate through the second array decrementing the count of the frequency. Finally we ensure all counts are 0 and return true based on this result.
+
+*One potential catch here is not keeping count of the characters if so you will miss cases where a word has duplicate letters*
+
+#### Time & Space
+The main function contains two loops iterating through both arrays giving us two O(s) + O(t) inside each loop we do either one or two hashset operations both of O(1) resulting in O(s)*O(1)*O(1) which = O(s) the same can be said for O(t) giving us O(s) + O(t) which we change to O(n) out of ease
+
+Time complexity = O(n)
+
+As we only create a dictionary which can be equal to the size of the array or some what less depending on repeating characters we get a space complexity of O(n)
+
+Space Complexity = O(n)
+
+
+
+### Two Sum
+
+Leetcode link --> https://leetcode.com/problems/two-sum
+
+Two sum is one of the first array questions that poses a problem which is not immediately obvious. Normally people consider the greedy approach. This is effectively a "Get out of jail card" depending on the level of the interview this will be a passing score for me if you can accept identify the time and space results. 
+
+As a result we will not step through the greedy approach. In order to complete this in one pass we need to have a way to identify the difference between a certain item and the target. Therefore we add each value to a dictionary as the index as the value. With each value we iterate ove we check the dictionary for the difference. If it exists then we have our two results.
+
+
+```c#
+    public int[] TwoSum(int[] nums, int target) 
+    {
+        Dictionary<int, int> vals = new Dictionary<int, int>();
+        for(int i  = 0 ; i < nums.Length; i++)
+        {
+            int diff = target - nums[i];
+            if (vals.TryGetValue(diff, out int index))
+                return new int[]{i, index};
+            else
+                vals.TryAdd(nums[i], i);
+        }
+        return default;
+    }
+```
+
+
+*Note this problem is the first example where we show the use of a hashset can be used to achieve linear time complexity*
 

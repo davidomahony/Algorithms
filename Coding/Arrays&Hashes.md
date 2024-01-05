@@ -99,8 +99,7 @@ Leetcode link --> https://leetcode.com/problems/two-sum
 
 Two sum is one of the first array questions that poses a problem which is not immediately obvious. Normally people consider the greedy approach. This is effectively a "Get out of jail card" depending on the level of the interview this will be a passing score for me if you can accept identify the time and space results. 
 
-As a result we will not step through the greedy approach. In order to complete this in one pass we need to have a way to identify the difference between a certain item and the target. Therefore we add each value to a dictionary as the index as the value. With each value we iterate ove we check the dictionary for the difference. If it exists then we have our two results.
-
+As a result we will not step through the greedy approach. In order to complete this in one pass we need to have a way to identify the difference between a certain item and the target. Therefore we add each value to a dictionary as the index as the value. With each value we iterate ove we check the dictionary for the difference. If it exists then we have our two results. One trap people fall into here is they forget about the indices.
 
 ```c#
     public int[] TwoSum(int[] nums, int target) 
@@ -118,6 +117,14 @@ As a result we will not step through the greedy approach. In order to complete t
     }
 ```
 
+#### Time & Space
+The main function contains one loop iterating through the nums array, we then make use of a hashset for potentially two more operations O(n).O(1).O(1) which give us O(n)
+
+Time complexity = O(n)
+
+As we only create a dictionary which can be equal to the size of the array or some what less depending on repeating characters we get a space complexity of O(n)
+
+Space Complexity = O(n)
 
 *Note this problem is the first example where we show the use of a hashset can be used to achieve linear time complexity*
 

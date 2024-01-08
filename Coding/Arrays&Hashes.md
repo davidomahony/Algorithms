@@ -130,3 +130,77 @@ Space Complexity = O(n)
 
 ### Group Anagrams
 
+Leet code link --> https://leetcode.com/problems/group-anagrams
+
+Once again another array question where we need a hashmap to keep track of the various anagrams. The best way to do this is store each value in alphabetical in order in as a key in the dictionary. Then on each iteration we sort the string alphabetically and check if a key exists. If so we add the new word to the list of anagrams
+
+| Anagram key | List of words for this anagram
+
+
+```c#
+    public IList<IList<string>> GroupAnagrams(string[] strs) 
+    {
+        Dictionary<string, IList<string>> inputs = new Dictionary<string, IList<string>>();
+        foreach (var itm in strs)
+        {
+            var array = itm.ToArray();
+            Array.Sort(array);
+            string sorted = new string(array);
+            if (inputs.TryGetValue(sorted, out IList<string> an))
+                an.Add(itm);
+            else
+                inputs.Add(sorted, new List<string>(){itm});
+        }
+
+        return inputs.Select(x => x.Value).ToList();
+    }
+```
+
+#### Time and Space complexity
+Time complexity uses a loop for each element O(n) then we sory a smaller array which is not considered as there in theory should be small. But if these arrays were larges then N this could prooe costly. But for now it will just be considered constant O(1) + 2 O(1) for the hash set operations.
+
+Time complexity: O(n)
+
+Space complexity we has one dictionary which will contain N elements and worse case N keys result in O(n) space.
+
+Space complexity: O(n)
+
+### Top K Frequent Elements
+
+This question is a pretty common as its relatively straight forward but requires a little bit of thinking and can lead to some nice questions on space and time complexity. Straight forward answer add integers as a key and increment the count of the value when you encounter them. Then reorder the array returning the two highest values
+
+
+```c#
+
+    public int[] TopKFrequent(int[] nums, int k) 
+    {
+        Dictionary<int, int> count = new Dictionary<int, int>();
+        foreach (var num in nums)
+        {
+            if (count.TryGetValue(num, out int result))
+                count[num] = result + 1;
+            else
+                count.Add(num, 1);
+        }
+
+        return count.OrderByDescending(x => x.Value)
+                .Select(x => x.Key)
+                .Take(k)
+                .ToArray();
+    }
+
+```
+
+#### Time and Space Complexity
+
+We iterate over all the elements in nums giving us O(n) then we order the dictionary based on the values the average sorting complexity is O(n log n) with a worst case of O(n^2) resulting in O(n) + O(nlogn)
+
+Time complexity: O(nlogn)
+
+Space complexity is pretty much a dictionary for each element, so worst case 2 O(n) where we have no repeating elements.
+
+Space complexity: O(n)
+
+### Product Of Array Except Self
+
+

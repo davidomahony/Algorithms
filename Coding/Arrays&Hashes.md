@@ -204,3 +204,62 @@ Space complexity: O(n)
 ### Product Of Array Except Self
 
 
+```c#
+
+    public int[] ProductExceptSelf(int[] nums) 
+    {
+        int length = nums.Length;
+        int[] result = new int[length];
+
+        result[0] = 1;
+        for (int i = 1; i < length; i++) 
+        {
+            result[i] = nums[i - 1] * result[i - 1];
+        }
+
+        int right = 1;
+        for (int i = length - 1; i >= 0; i--) 
+        {
+            result[i] *= right;
+            right *= nums[i];
+        }
+
+        return result;
+    }
+
+```
+
+
+### Longest Consecutive Sequence
+
+
+```c#
+
+    public int LongestConsecutive(int[] nums) 
+    {
+        HashSet<int> track = new HashSet<int>();
+
+        foreach (var num in nums)
+            track.Add(num);
+        
+        int longest = 0; 
+        for (int i  = 0 ; i < nums.Length; i++)
+        {
+            if(track.Contains(nums[i] - 1)) continue;
+
+            bool active = true;
+            int length = 1;
+            while (active)
+            {
+                active = track.Contains(nums[i] + length);
+                if (active)
+                    length++;
+            }
+
+            longest = Math.Max(longest, length);
+        }
+
+        return longest;
+    }
+
+```

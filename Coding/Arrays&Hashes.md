@@ -157,7 +157,7 @@ Once again another array question where we need a hashmap to keep track of the v
 ```
 
 #### Time and Space complexity
-Time complexity uses a loop for each element O(n) then we sory a smaller array which is not considered as there in theory should be small. But if these arrays were larges then N this could prooe costly. But for now it will just be considered constant O(1) + 2 O(1) for the hash set operations.
+Time complexity uses a loop for each element O(n) then we sory a smaller array which is not considered as there in theory should be small. But if these arrays were larges then N this could prooe costly. But for now it will just be considered constant O(1) +  O(1) for the hash set operations.
 
 Time complexity: O(n)
 
@@ -197,12 +197,11 @@ We iterate over all the elements in nums giving us O(n) then we order the dictio
 
 Time complexity: O(nlogn)
 
-Space complexity is pretty much a dictionary for each element, so worst case 2 O(n) where we have no repeating elements.
+Space complexity is pretty much a dictionary for each element, so worst case  O(2n) where we have no repeating elements.
 
 Space complexity: O(n)
 
 ### Product Of Array Except Self
-
 
 ```c#
 
@@ -232,6 +231,12 @@ Space complexity: O(n)
 
 ### Longest Consecutive Sequence
 
+This question is on the trickier but like various questions to do with arrays, places where we can use a hasmap lets do it. Locating the largest substring can be completed by checking the sequence with each element. But this will give us some really bad time complexity. We need to use some tricks here to try and lower the number of iterations we do along with trying to make as many operations constant. 
+
+- Trick one we use a hashmap to check it contains the next element. Great this is a constant calculation. 
+- But if we are not careful we could end up doing the same sequesnce several times. So we need to catch that, by checking if the value immediately below it exists. If so lets just count it when its thats elements turn.
+
+Leetcode link: https://leetcode.com/problems/longest-consecutive-sequence/
 
 ```c#
 
@@ -263,3 +268,12 @@ Space complexity: O(n)
     }
 
 ```
+
+#### Time & space complexity
+So first loop we add everything to a hashmap which is O(n) then if every element is cont consequtive we could step through everything again giving us another O(n) giving us O(2n) which is effectively O(n)
+
+Time complexity = O(n)
+
+For Space complexity we add everything into a hashet which results in a space complexity of O(n) 
+
+Space complexity = O(n)

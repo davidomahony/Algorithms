@@ -1,3 +1,8 @@
-## What is this repository about?
+# What is this repository about?
 
-TLDR; I hate preparing for interviewing people involving live coding questions, so I am dumping all my information here so I dont have to look for it each time.
+Some general notes I have from various different topics, you may find them useful and if you dont, tough!
+
+
+
+## Coding
+These questions can be tricky, but they can be split into categories and different tools/techniques can be used for each category.

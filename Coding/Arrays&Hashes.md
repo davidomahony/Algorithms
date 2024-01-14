@@ -1,6 +1,6 @@
 # Arrays And Hashes
 
-The goal of this document is to look at common live coding questions to try and identify a pattern for solving these problems along with identifying what we should learn from a specific problem. We will start with easy problems to hard.
+The goal of this document is to look at common live coding questions to try and identify a pattern for solving these problems along with identifying what we should learn from a specific problem. We will start with easy problems and move to hard. At the end we will have lessons learn and general tips to handle these questions.
 
 ## Problems
 
@@ -277,3 +277,6 @@ Time complexity = O(n)
 For Space complexity we add everything into a hashet which results in a space complexity of O(n) 
 
 Space complexity = O(n)
+
+
+## General Tips

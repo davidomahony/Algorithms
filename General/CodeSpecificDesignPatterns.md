@@ -86,3 +86,36 @@ public class SqlQueryBuilder
 
 ### Singleton
 
+Sure, the Singleton pattern is a design pattern that restricts the instantiation of a class to one object and provides a simple way to access it. This is useful when exactly one object is needed to coordinate actions across the system in c# often with static cases.
+
+```c#
+
+public sealed class Singleton
+{
+    private static Singleton instance = null;
+    private static readonly object padlock = new object();
+
+    Singleton()
+    {
+    }
+
+    public static Singleton Instance
+    {
+        get
+        {
+            lock (padlock)
+            {
+                if (instance == null)
+                {
+                    instance = new Singleton();
+                }
+                return instance;
+            }
+        }
+    }
+}
+
+
+```
+
+This pattern ensures that a class has only one instance and provides a global point of access to it. It’s commonly used in scenarios where system-wide actions need to be coordinated from a single central place. An example might be a database connection pool. The pool manages the creation, destruction, and lifetime of all database connections for the entire application, ensuring that no connections are ‘lost’.
